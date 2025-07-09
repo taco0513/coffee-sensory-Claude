@@ -1,0 +1,607 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  max-width: 430px;
+  background: white;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  background: white;
+}
+
+.page {
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  font-size: 28px;
+  margin: 40px 0;
+  color: #000;
+}
+
+.main-button-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.main-button {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #000;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000;
+}
+
+.main-button:active {
+  background: #000;
+  color: white;
+}
+
+.plus-icon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.recent-section {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.recent-section h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.recent-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #fafafa;
+  color: #000;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  position: relative;
+  border-bottom: 1px solid #eee;
+}
+
+.header button {
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Form Styles */
+.coffee-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  overflow-y: auto;
+}
+
+.form-section {
+  padding: 0 20px;
+  overflow-y: auto;
+  flex: 1;
+  margin-bottom: 0;
+  background: #fff;
+}
+
+.form-section label {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-section input,
+.form-section select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #000;
+  background: white;
+}
+
+.form-section select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #000;
+  background: white;
+}
+
+.form-section input::placeholder {
+  color: #999;
+}
+
+.form-section input:focus,
+.form-section select:focus {
+  outline: none;
+  border-color: #333;
+  box-shadow: none;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.required {
+  color: #e74c3c;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.optional {
+  color: #7f8c8d;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.2s;
+  background-color: #fff;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+.button-container {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.back-button,
+.next-button {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.back-button {
+  background-color: #f1f2f6;
+  color: #2d3436;
+}
+
+.back-button:active {
+  background-color: #dfe6e9;
+}
+
+.next-button {
+  background-color: #000;
+  color: white;
+}
+
+.next-button:disabled,
+.next-button.disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.coffee-form::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.coffee-form {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Taste Selection Page */
+.taste-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.taste-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.taste-button:hover {
+  border-color: #999;
+}
+
+.taste-button.selected {
+  border-color: #000;
+  background: #f5f5f5;
+}
+
+.taste-emoji {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.taste-name {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Multiple Selection Styles */
+.selected-count {
+  text-align: center;
+  color: #666;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.taste-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 8px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.check-mark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #000;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* Feeling Selection Page */
+.feeling-preview {
+  background: #f5f5f5;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.feeling-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.feeling-button {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.feeling-button:hover:not(:disabled) {
+  border-color: #999;
+}
+
+.feeling-button.selected {
+  border-color: #000;
+  background: #f5f5f5;
+}
+
+.feeling-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.feeling-emoji {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.feeling-name {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Roaster Notes Page */
+.notes-container {
+  margin-top: 20px;
+}
+
+.note-field {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.note-input {
+  width: 100%;
+  padding: 12px;
+  padding-right: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.remove-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover {
+  color: #333;
+}
+
+.add-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 2px dashed #ddd;
+  background: white;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  border-color: #999;
+  color: #333;
+}
+
+/* Roaster Notes Page Styles */
+.note-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.note-input-container input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.remove-button {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.remove-button:hover {
+  color: #333;
+}
+
+.add-field-button {
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed #ddd;
+  background: none;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.add-field-button:hover {
+  border-color: #999;
+  color: #333;
+}
+
+/* AutoCompleteInput Styles */
+/* Input container */
+.input-container {
+  position: relative;
+}
+
+/* Autocomplete container */
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Suggestions dropdown */
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 0 0 8px 8px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 0 0 8px 8px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+  padding: 4px 0;
+  list-style: none;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 15px;
+  color: #2c3e50;
+}
+
+.suggestion-item:hover {
+  background: #f5f5f5;
+}
+
+.suggestion-item:active {
+  background-color: #f1f3f5;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .form-section {
+    padding: 20px;
+  }
+  
+  .button-container {
+    padding-top: 24px;
+  }
+}
